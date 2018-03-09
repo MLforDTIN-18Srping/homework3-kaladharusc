@@ -32,8 +32,8 @@ def scatterplot(X, Y, xLabel, yLabel, xticks=None, yticks=None):
     if yticks is not None:
         plt.yticks(np.arange(yticks.size), yticks)
     plt.ylabel(yLabel)
-
 ##################################################### Common Functions #################################################
+
 #=======================================================================================================================
 def a_read_data():
     data_df = pd.read_csv("communities.data", skip_blank_lines=False)
@@ -119,7 +119,7 @@ def f_linear_regression():
 
     mse = mean_squared_error(y_test, y_predict)
     print(mse)
-
+#=======================================================================================================================
 def g_ridge_regression():
     train_data, test_data,_ = b_fill_nan()
 
@@ -137,7 +137,7 @@ def g_ridge_regression():
 
     mse = mean_squared_error(y_test, y_predict)
     print(mse)
-
+#=======================================================================================================================
 def h_lasso_regresion():
     train_data, test_data, _ = b_fill_nan()
 
@@ -170,7 +170,7 @@ def h_lasso_regresion():
 
     y_predict_nrom = lasso_regression_norm.predict(x_test)
     print("mean squared error norm", mean_squared_error(y_test, y_predict_nrom))
-
+#=======================================================================================================================
 def i_pcr():
     train_data, test_data, _ = b_fill_nan()
 
@@ -228,9 +228,7 @@ def i_pcr():
     plt.xlabel("n components")
     plt.ylabel("CV scores")
     plt.savefig("./i_pcr_cv_score.png")
-
-
-
+#=======================================================================================================================
 def j_xg_boost():
     train_data, test_data, _ = b_fill_nan()
 
@@ -272,17 +270,16 @@ def j_xg_boost():
     plt.xlabel("regularization parameter")
     plt.legend(loc="upper right")
     plt.savefig("./plots/1_j_xgboost_alpha_reg_parameter_final.png")
-
-
+#=======================================================================================================================
 if __name__ == '__main__':
 
     #a_read_data()
     #b_fill_nan()
     #c_correlation_matrix()
     #d_coefficient_variation()
-    e_plots()
+    #e_plots()
     #f_linear_regression()
-    #g_ridge_regression()
+    g_ridge_regression()
     #h_lasso_regresion()
     #i_pcr()
     #j_xg_boost()

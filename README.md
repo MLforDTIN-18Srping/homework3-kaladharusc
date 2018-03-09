@@ -159,3 +159,10 @@
 -   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/1_e_scatter_plots_response.png "response feature scatter plot")
 -   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/1_e_boxplot.png "box plot")
 -   ~TODO: Conclistions~
+
+### f) Linear Regression:
+-   > **Test Mean Squared Error: 0.7716253161613343**
+
+### g) Ridge Regression:
+-   > **Lambda : 1.0**
+-   > **Test Mean Squared Error : 0.0177**
