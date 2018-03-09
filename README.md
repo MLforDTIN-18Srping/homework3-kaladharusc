@@ -161,8 +161,10 @@
 -   ~TODO: Conclistions~
 
 ### f) Linear Regression:
--   > **Test Mean Squared Error: 0.7716253161613343**
+
+   > **Test Mean Squared Error: 0.7716253161613343**
 
 ### g) Ridge Regression:
--   > **Lambda : 1.0**
--   > **Test Mean Squared Error : 0.0177**
+
+   > **Lambda : 1.0**  
+   > **Test Mean Squared Error : 0.0177**
