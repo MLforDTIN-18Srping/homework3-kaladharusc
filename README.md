@@ -171,7 +171,7 @@
    
 ### h) Lasso:
 
-###### Without Normalization:
+##### Without Normalization:
 
 > **Lambda : 0.001**   
 > **Test Mean Squared Error : 0.0175493**
@@ -204,7 +204,7 @@
 | LemasGangUnitDeploy   | 0.01303154622439256     |
 | LemasPctOfficDrugUn   | 0.004976531468026911    |
 
-######  After Normalization:
+#####  After Normalization:
 
 > **Lambda : 0.001**   
 > **Test Mean Squared Error : 0.0197735**
