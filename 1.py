@@ -155,7 +155,7 @@ def h_lasso_regresion():
     print("selected lambda", lasso_regression.alpha_)
     coeff_df = pd.DataFrame([lasso_regression.coef_], columns=train_data.columns.values[:-1]).transpose()
     coeff_df = coeff_df[coeff_df[0] != 0.0]
-    print(coeff_df)
+    print(coeff_df.to_csv())
 
     y_predict = lasso_regression.predict(x_test)
     print("mean squared error", mean_squared_error(y_test, y_predict))
@@ -166,7 +166,7 @@ def h_lasso_regresion():
     print("selected lambda norm", lasso_regression_norm.alpha_)
     coeff_df = pd.DataFrame([lasso_regression_norm.coef_], columns=train_data.columns.values[:-1]).transpose()
     coeff_df = coeff_df[coeff_df[0] != 0.0]
-    print(coeff_df)
+    print(coeff_df.to_csv())
 
     y_predict_nrom = lasso_regression_norm.predict(x_test)
     print("mean squared error norm", mean_squared_error(y_test, y_predict_nrom))
@@ -279,8 +279,8 @@ if __name__ == '__main__':
     #d_coefficient_variation()
     #e_plots()
     #f_linear_regression()
-    g_ridge_regression()
-    #h_lasso_regresion()
+    #g_ridge_regression()
+    h_lasso_regresion()
     #i_pcr()
     #j_xg_boost()
 
