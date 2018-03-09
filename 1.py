@@ -6,6 +6,7 @@ from sklearn.metrics import mean_squared_error
 from sklearn.decomposition import PCA
 from sklearn.model_selection import cross_val_score
 import xgboost
+from pandas.plotting import scatter_matrix
 from sklearn.model_selection import KFold
 ##################################################### Common Functions #################################################
 plt.style.use('ggplot')
@@ -74,17 +75,33 @@ def e_plots():
     fig = plt.figure(figsize=(20, 10))
     box_plot_data = train_data[top_cvs.index]
     plt.boxplot(box_plot_data.as_matrix(), labels=top_cvs.index.values)
-    plt.savefig("./plots/e_boxplot.png")
+    plt.savefig("./plots/1_e_boxplot.png")
     plt.close()
 
     fig = plt.figure(figsize=(15, 20))
     i = 1
     for (key,value) in top_cvs.items():
-        fig.add_subplot(5,2,i)
+        fig.add_subplot(5,3,i)
         X = train_data[key]
         scatterplot(X,Y, key, response_var)
         i += 1
-    plt.savefig("./plots/e_scatter_plots.png")
+    plt.savefig("./plots/1_e_scatter_plots_response.png")
+    plt.close()
+
+    axs = scatter_matrix(box_plot_data, figsize=(21, 21), diagonal='kde')
+    n = len(box_plot_data.columns)
+    for x in range(n):
+        for y in range(n):
+            # to get the axis of subplots
+            ax = axs[x, y]
+            # to make x axis name vertical
+            ax.xaxis.label.set_rotation(90)
+            # to make y axis name horizontal
+            ax.yaxis.label.set_rotation(0)
+            # to make sure y axis names are outside the plot area
+            ax.yaxis.labelpad = 50
+
+    plt.savefig("./plots/1_e_scatter_plots.png")
     plt.close()
 #=======================================================================================================================
 def f_linear_regression():
@@ -262,8 +279,8 @@ if __name__ == '__main__':
     #a_read_data()
     #b_fill_nan()
     #c_correlation_matrix()
-    d_coefficient_variation()
-    #e_plots()
+    #d_coefficient_variation()
+    e_plots()
     #f_linear_regression()
     #g_ridge_regression()
     #h_lasso_regresion()

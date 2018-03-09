@@ -25,6 +25,7 @@
 -   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/1_c_correlations.png "correlation matrix")
 
 ### d) Coefficient of Variation for each feature.
+-   Calculated using `Standard Deviation / Mean` .
 
     | Feature               | Coefficient Of Variation |
     |-----------------------|--------------------------|
@@ -152,3 +153,9 @@
     | PctPolicWhite         | 0.12258236559333853      |
     | LemasPctPolicOnPatr   | 0.11798844847958818      |
     | LemasSwFTFieldOps     | 0.06400225509556129      |
+    
+### e) Scatter plot and Box plots
+-   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/1_e_scatter_plots.png "pairwise scatter plot")
+-   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/1_e_scatter_plots_response.png "response feature scatter plot")
+-   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/1_e_boxplot.png "box plot")
+-   ~TODO: Conclistions~
