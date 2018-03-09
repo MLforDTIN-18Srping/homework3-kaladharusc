@@ -75,7 +75,7 @@ def e_plots():
     fig = plt.figure(figsize=(20, 10))
     box_plot_data = train_data[top_cvs.index]
     plt.boxplot(box_plot_data.as_matrix(), labels=top_cvs.index.values)
-    plt.savefig("./plots/1_e_boxplot.png")
+    plt.savefig("./plots/1_e_boxplot.png", bbox_inches='tight')
     plt.close()
 
     fig = plt.figure(figsize=(15, 20))
@@ -85,7 +85,7 @@ def e_plots():
         X = train_data[key]
         scatterplot(X,Y, key, response_var)
         i += 1
-    plt.savefig("./plots/1_e_scatter_plots_response.png")
+    plt.savefig("./plots/1_e_scatter_plots_response.png", bbox_inches='tight')
     plt.close()
 
     axs = scatter_matrix(box_plot_data, figsize=(21, 21), diagonal='kde')
@@ -101,7 +101,7 @@ def e_plots():
             # to make sure y axis names are outside the plot area
             ax.yaxis.labelpad = 50
 
-    plt.savefig("./plots/1_e_scatter_plots.png")
+    plt.savefig("./plots/1_e_scatter_plots.png", bbox_inches='tight')
     plt.close()
 #=======================================================================================================================
 def f_linear_regression():
