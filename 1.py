@@ -37,6 +37,7 @@ def scatterplot(X, Y, xLabel, yLabel, xticks=None, yticks=None):
 def a_read_data():
     data_df = pd.read_csv("communities.data", skip_blank_lines=False)
     print(data_df.shape)
+    print(data_df.head(2).to_csv())
 #=======================================================================================================================
 def b_fill_nan():
     data_df = pd.read_csv("communities.data", skip_blank_lines=False)
@@ -46,6 +47,8 @@ def b_fill_nan():
     #print(data_df.isnull().sum())
     global not_predictors
     data_df = data_df.drop(not_predictors, axis=1)
+    print(data_df.shape)
+    print(data_df.head(2).to_csv())
     return data_df[:1495],data_df[1495:], data_df
 #=======================================================================================================================
 def c_correlation_matrix():
@@ -257,16 +260,16 @@ def j_xg_boost():
 
 if __name__ == '__main__':
 
-    # a_read_data()
-    # b_fill_nan()
-    #c_correlation_matrix()
+    #a_read_data()
+    #b_fill_nan()
+    c_correlation_matrix()
     #d_coefficient_variation()
     #e_plots()
     #f_linear_regression()
     #g_ridge_regression()
     #h_lasso_regresion()
     #i_pcr()
-    j_xg_boost()
+    #j_xg_boost()
 
 
 
