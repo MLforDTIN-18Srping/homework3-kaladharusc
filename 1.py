@@ -11,7 +11,7 @@ from sklearn.model_selection import KFold
 plt.style.use('ggplot')
 not_predictors = ["state", "county", "community", "communityname"]
 response_var = "ViolentCrimesPerPop"
-def plot_corr(correlations, columns):
+def plot_corr(correlations, columns, name):
     fig = plt.figure(figsize=(30,30))
     ax = fig.add_subplot(111)
     cax = ax.matshow(correlations, vmin=-1, vmax=1)
@@ -22,7 +22,7 @@ def plot_corr(correlations, columns):
     ax.set_xticklabels(columns)
     ax.set_yticklabels(columns)
     plt.xticks(rotation=90)
-    plt.savefig("./plots/1_c_correlations.png")
+    plt.savefig(name)
 def scatterplot(X, Y, xLabel, yLabel, xticks=None, yticks=None):
     plt.scatter(X, Y, s=2)
     plt.xlabel(xLabel)
@@ -47,15 +47,14 @@ def b_fill_nan():
     #print(data_df.isnull().sum())
     global not_predictors
     data_df = data_df.drop(not_predictors, axis=1)
-    print(data_df.shape)
-    print(data_df.head(2).to_csv())
+    # print(data_df.shape)
+    # print(data_df.head(2).to_csv())
     return data_df[:1495],data_df[1495:], data_df
 #=======================================================================================================================
 def c_correlation_matrix():
     train_data, test_data,_ = b_fill_nan()
     correlations = train_data.corr()
-    print(train_data.columns.values)
-    plot_corr(correlations, train_data.columns.values)
+    plot_corr(correlations, train_data.columns.values, "./plots/1_c_correlations.png")
 #=======================================================================================================================
 def d_coefficient_variation():
     train_data, test_data,_ = b_fill_nan()
@@ -64,7 +63,7 @@ def d_coefficient_variation():
     CV = std_values/mean_values
     CV = CV.sort_values(ascending=False)
 
-    print(CV)
+    print(CV.to_csv())
     return CV
 #=======================================================================================================================
 def e_plots():
@@ -262,8 +261,8 @@ if __name__ == '__main__':
 
     #a_read_data()
     #b_fill_nan()
-    c_correlation_matrix()
-    #d_coefficient_variation()
+    #c_correlation_matrix()
+    d_coefficient_variation()
     #e_plots()
     #f_linear_regression()
     #g_ridge_regression()
