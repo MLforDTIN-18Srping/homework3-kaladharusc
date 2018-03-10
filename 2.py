@@ -90,7 +90,8 @@ def b_i_impute_data():
     train_data = train_data.apply(pd.to_numeric, errors='ignore')
     train_data.fillna(train_data.mean(), inplace=True)
     test_data.fillna(test_data.mean(), inplace=True)
-
+    # print(train_data.head(2).to_csv())
+    # print(train_data.shape)
     return train_data, test_data
 # ======================================================================================================================
 def b_ii_coefficient_variation():
@@ -100,7 +101,7 @@ def b_ii_coefficient_variation():
     CV = std_values/mean_values
     CV = CV.sort_values(ascending=False)
 
-    print(CV)
+    print(CV.to_csv())
     return CV
 # ======================================================================================================================
 def b_iii_correlation_matrix():
@@ -147,7 +148,7 @@ def c_random_forest():
     plt.plot(n_componenets,oob_errors,label = "RandomForestClassifier, max_features='sqrt'")
     plt.plot(n_componenets[min_index],oob_errors[min_index],marker='X', ms=6)
     plt.legend(loc="upper right")
-    plt.savefig("./plots/c_oob_errors.png")
+    plt.savefig("./plots/2_c_oob_errors.png")
     plt.close()
 
     max_score = max(classification_scores)
@@ -163,7 +164,7 @@ def c_random_forest():
     plt.figure()
     plot_confusion_matrix(cm, classes=["neg", "pos"],
                           title='Confusion matrix, without normalization')
-    plt.savefig("./plots/c_train_confusion_matrix.png")
+    plt.savefig("./plots/2_c_train_confusion_matrix.png")
     plt.close()
 
     # confusion Matrix Test Data
@@ -174,17 +175,17 @@ def c_random_forest():
     plt.figure()
     plot_confusion_matrix(cm, classes=["neg", "pos"],
                           title='Confusion matrix, without normalization')
-    plt.savefig("./plots/c_test_confusion_matrix.png")
+    plt.savefig("./plots/2_c_test_confusion_matrix.png")
     plt.close()
 
     #ROC curve Train Data
     Y_score = rfc.predict_proba(x_train)[:,1:]
-    plot_roc_curve(y_train,Y_score,"./plots/c_train_ROC_curve.png")
+    plot_roc_curve(y_train,Y_score,"./plots/2_c_train_ROC_curve.png")
     plt.close()
 
     # ROC curve Test Data
     Y_score = rfc.predict_proba(x_test)[:, 1:]
-    plot_roc_curve(y_test, Y_score, "./plots/c_test_ROC_curve.png")
+    plot_roc_curve(y_test, Y_score, "./plots/2_c_test_ROC_curve.png")
     plt.close()
 # ======================================================================================================================
 def d_random_forest_balanced():
@@ -213,7 +214,7 @@ def d_random_forest_balanced():
     plt.plot(n_componenets,oob_errors,label = "RandomForestClassifier, max_features='sqrt'")
     plt.plot(n_componenets[min_index],oob_errors[min_index],marker='X', ms=6)
     plt.legend(loc="upper right")
-    plt.savefig("./plots/d_oob_errors.png")
+    plt.savefig("./plots/2_d_oob_errors.png")
     plt.close()
 
     max_score = max(classification_scores)
@@ -229,7 +230,7 @@ def d_random_forest_balanced():
     plt.figure()
     plot_confusion_matrix(cm, classes=["neg", "pos"],
                           title='Confusion matrix, without normalization')
-    plt.savefig("./plots/d_train_confusion_matrix.png")
+    plt.savefig("./2_plots/d_train_confusion_matrix.png")
     plt.close()
 
     # confusion Matrix Test Data
@@ -240,17 +241,17 @@ def d_random_forest_balanced():
     plt.figure()
     plot_confusion_matrix(cm, classes=["neg", "pos"],
                           title='Confusion matrix, without normalization')
-    plt.savefig("./plots/d_test_confusion_matrix.png")
+    plt.savefig("./plots/2_d_test_confusion_matrix.png")
     plt.close()
 
     #ROC curve Train Data
     Y_score = rfc.predict_proba(x_train)[:,1:]
-    plot_roc_curve(y_train,Y_score,"./plots/d_train_ROC_curve.png")
+    plot_roc_curve(y_train,Y_score,"./plots/2_d_train_ROC_curve.png")
     plt.close()
 
     # ROC curve Test Data
     Y_score = rfc.predict_proba(x_test)[:, 1:]
-    plot_roc_curve(y_test, Y_score, "./plots/d_test_ROC_curve.png")
+    plot_roc_curve(y_test, Y_score, "./plots/2_d_test_ROC_curve.png")
     plt.close()
 
 
@@ -259,9 +260,9 @@ from weka.classifiers import Classifier, Evaluation
 from weka.core.classes import Random
 import weka.plot.classifiers as plcls
 def e_model_tree():
-    train_data, test_data = b_i_impute_data()
-    train_data.to_csv("./train_data.csv", index=False)
-    test_data.to_csv("./test_data.csv",index=False)
+    # train_data, test_data = b_i_impute_data()
+    # train_data.to_csv("./train_data.csv", index=False)
+    # test_data.to_csv("./test_data.csv",index=False)
 
     jvm.start()
     train_data = converters.load_any_file("train_data.csv")
@@ -313,4 +314,8 @@ def e_model_tree():
 
 
 if __name__ == '__main__':
-    e_model_tree()
+    #b_i_impute_data()
+    #b_ii_coefficient_variation()
+    #b_v_numberof_pos_neg()
+    c_random_forest()
+    #e_model_tree()
