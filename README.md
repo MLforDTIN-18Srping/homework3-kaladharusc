@@ -449,4 +449,30 @@
    > Test Accuracy: 0.98875
    
    ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/2_d_oob_errors.png "Out Of Bag Error")
+   
 ### E) Model Trees
+    Used 5 Folds
+   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/2_e_train_roc.png "Train ROC")
+   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/2_e_roc_test.png "Test ROC")
+   -    Test Confusion Matrix
+   [[15584.    41.]
+    [  115.   260.]]
+   - Train confusion matrix
+    [[58855.   145.]
+     [  351.   649.]]
+   > Train Accuracy: 99.17333333333333
+   > Test Accuracy: 99.025
+
+### F) SMOTE
+
+    ~TODO Train CV~
+   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/2_f_roc_smote_lmt_60k.png "Test ROC")   
+   
+    ~Todo TRAIN Confusion Matrix~
+   
+   - Test Confusion Matrix
+   [[15134.   491.]
+    [   59.   316.]]
+   > Train Accuracy:
+   > Test Accuracy: 96.5625
+    
