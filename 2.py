@@ -23,7 +23,7 @@ def plot_corr(correlations, columns):
     ax.set_xticklabels(columns)
     ax.set_yticklabels(columns)
     plt.xticks(rotation=90)
-    plt.savefig("./plots/2_b_iii_correlations.png")
+    savefig("./plots/2_b_iii_correlations.png")
 def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix', cmap=plt.cm.Blues):
     """
     This function prints and plots the confusion matrix.
@@ -78,7 +78,7 @@ def plot_roc_curve(y_true, y_predict_scores, charname):
     plt.ylabel('True Positive Rate')
     plt.title('Receiver operating characteristic example')
     plt.legend(loc="lower right")
-    plt.savefig(charname)
+    savefig(charname)
 
 ##################################################### Common Functions #################################################
 # =======================================================================================================================
@@ -148,7 +148,7 @@ def c_random_forest():
     plt.plot(n_componenets,oob_errors,label = "RandomForestClassifier, max_features='sqrt'")
     plt.plot(n_componenets[min_index],oob_errors[min_index],marker='X', ms=6)
     plt.legend(loc="upper right")
-    plt.savefig("./plots/2_c_oob_errors.png")
+    savefig("./plots/2_c_oob_errors.png")
     plt.close()
 
     max_score = max(classification_scores)
@@ -164,7 +164,7 @@ def c_random_forest():
     plt.figure()
     plot_confusion_matrix(cm, classes=["neg", "pos"],
                           title='Confusion matrix, without normalization')
-    plt.savefig("./plots/2_c_train_confusion_matrix.png")
+    savefig("./plots/2_c_train_confusion_matrix.png")
     plt.close()
 
     # confusion Matrix Test Data
@@ -175,7 +175,7 @@ def c_random_forest():
     plt.figure()
     plot_confusion_matrix(cm, classes=["neg", "pos"],
                           title='Confusion matrix, without normalization')
-    plt.savefig("./plots/2_c_test_confusion_matrix.png")
+    savefig("./plots/2_c_test_confusion_matrix.png")
     plt.close()
 
     #ROC curve Train Data
@@ -188,6 +188,9 @@ def c_random_forest():
     plot_roc_curve(y_test, Y_score, "./plots/2_c_test_ROC_curve.png")
     plt.close()
 # ======================================================================================================================
+
+def savefig(*args):
+    plt.savefig(bbox_inches='tight', *args)
 def d_random_forest_balanced():
     train_data, test_data = b_i_impute_data()
     y_train = train_data["class"]
@@ -214,7 +217,7 @@ def d_random_forest_balanced():
     plt.plot(n_componenets,oob_errors,label = "RandomForestClassifier, max_features='sqrt'")
     plt.plot(n_componenets[min_index],oob_errors[min_index],marker='X', ms=6)
     plt.legend(loc="upper right")
-    plt.savefig("./plots/2_d_oob_errors.png")
+    savefig("./plots/2_d_oob_errors.png")
     plt.close()
 
     max_score = max(classification_scores)
@@ -230,7 +233,7 @@ def d_random_forest_balanced():
     plt.figure()
     plot_confusion_matrix(cm, classes=["neg", "pos"],
                           title='Confusion matrix, without normalization')
-    plt.savefig("./2_plots/d_train_confusion_matrix.png")
+    savefig("./plots/2_d_train_confusion_matrix.png")
     plt.close()
 
     # confusion Matrix Test Data
@@ -241,7 +244,7 @@ def d_random_forest_balanced():
     plt.figure()
     plot_confusion_matrix(cm, classes=["neg", "pos"],
                           title='Confusion matrix, without normalization')
-    plt.savefig("./plots/2_d_test_confusion_matrix.png")
+    savefig("./plots/2_d_test_confusion_matrix.png")
     plt.close()
 
     #ROC curve Train Data
@@ -288,7 +291,7 @@ def e_model_tree():
     print("Train confusion matrix")
     print(evl.confusion_matrix)
     plcls.plot_roc(evl, class_index=[0, 1], wait=True)
-    plt.savefig("./plots/e_train_roc_curve.png")
+    savefig("./plots/e_train_roc_curve.png")
 
     evl = Evaluation(test_data)
     evl.test_model(cls, test_data)
@@ -300,7 +303,7 @@ def e_model_tree():
     print("Testconfusion matrix")
     print(evl.confusion_matrix)
     plcls.plot_roc(evl, class_index=[0, 1], wait=True)
-    plt.savefig("./plots/e_test_roc_curve.png")
+    savefig("./plots/e_test_roc_curve.png")
 
     # train_data, test_data = b_i_impute_data()
     # y_train = train_data["class"]
@@ -316,6 +319,8 @@ def e_model_tree():
 if __name__ == '__main__':
     #b_i_impute_data()
     #b_ii_coefficient_variation()
+    #b_iii_correlation_matrix()
     #b_v_numberof_pos_neg()
-    c_random_forest()
+    #c_random_forest()
+    d_random_forest_balanced()
     #e_model_tree()

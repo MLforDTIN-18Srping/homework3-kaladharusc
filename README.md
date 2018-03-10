@@ -440,6 +440,13 @@
 
 ### D) Random Forest: Balanced
 
+   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/2_d_train_confusion_matrix.png "Train Confusion Matrix")
+   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/2_d_test_confusion_matrix.png "Test Confusion Matrix")
+   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/2_d_train_ROC_curve.png "Train ROC")
+   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/2_d_test_ROC_curve.png "Test ROC")
 
-
+   > Train Accuracy :   0.99975       
+   > Test Accuracy: 0.98875
+   
+   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/2_d_oob_errors.png "Out Of Bag Error")
 ### E) Model Trees
