@@ -171,48 +171,60 @@
    
 ### h) Lasso:
 
-##### Without Normalization:
+-   ##### Without Normalization:
 
-> **Lambda : 0.001**   
-> **Test Mean Squared Error : 0.0175493**
--   List of Selected Features
+       > **Lambda : 0.001**   
+       > **Test Mean Squared Error : 0.0175493**
+       
+    -   List of Selected Features
 
-| Feature               | Coefficeint             |
-|-----------------------|-------------------------|
-| fold                  | -0.0024632818940134847  |
-| racepctblack          | 0.2136304826238652      |
-| racePctWhite          | -0.010666196061505265   |
-| agePct12t29           | -0.0056684065166765695  |
-| pctUrban              | 0.0387977055910673      |
-| pctWPubAsst           | 0.031154908251889758    |
-| pctWRetire            | -0.00034365605499309305 |
-| AsianPerCap           | 0.010628869535947045    |
-| MalePctDivorce        | 0.14738919568761458     |
-| PctKids2Par           | -0.21068845158371485    |
-| PctYoungKids2Par      | -0.0047671145061663825  |
-| PctWorkMom            | -0.049508602937231166   |
-| PctIlleg              | 0.15733045885348862     |
-| PctRecImmig10         | 0.0030141250238833175   |
-| PctPersDenseHous      | 0.15647494687113706     |
-| HousVacant            | 0.10157965991303455     |
-| PctHousOccup          | -0.045633926812455955   |
-| PctVacantBoarded      | 0.035451356270784926    |
-| MedRentPctHousInc     | 0.023800255539232602    |
-| MedOwnCostPctIncNoMtg | -0.016075361511763562   |
-| NumStreet             | 0.07763144804534455     |
-| PctForeignBorn        | 0.04160212014119507     |
-| LemasGangUnitDeploy   | 0.01303154622439256     |
-| LemasPctOfficDrugUn   | 0.004976531468026911    |
+        | Feature               | Coefficeint             |
+        |-----------------------|-------------------------|
+        | fold                  | -0.0024632818940134847  |
+        | racepctblack          | 0.2136304826238652      |
+        | racePctWhite          | -0.010666196061505265   |
+        | agePct12t29           | -0.0056684065166765695  |
+        | pctUrban              | 0.0387977055910673      |
+        | pctWPubAsst           | 0.031154908251889758    |
+        | pctWRetire            | -0.00034365605499309305 |
+        | AsianPerCap           | 0.010628869535947045    |
+        | MalePctDivorce        | 0.14738919568761458     |
+        | PctKids2Par           | -0.21068845158371485    |
+        | PctYoungKids2Par      | -0.0047671145061663825  |
+        | PctWorkMom            | -0.049508602937231166   |
+        | PctIlleg              | 0.15733045885348862     |
+        | PctRecImmig10         | 0.0030141250238833175   |
+        | PctPersDenseHous      | 0.15647494687113706     |
+        | HousVacant            | 0.10157965991303455     |
+        | PctHousOccup          | -0.045633926812455955   |
+        | PctVacantBoarded      | 0.035451356270784926    |
+        | MedRentPctHousInc     | 0.023800255539232602    |
+        | MedOwnCostPctIncNoMtg | -0.016075361511763562   |
+        | NumStreet             | 0.07763144804534455     |
+        | PctForeignBorn        | 0.04160212014119507     |
+        | LemasGangUnitDeploy   | 0.01303154622439256     |
+        | LemasPctOfficDrugUn   | 0.004976531468026911    |
 
-#####  After Normalization:
+-   #####  After Normalization:
 
-> **Lambda : 0.001**   
-> **Test Mean Squared Error : 0.0197735**
--   List of Selected Features
+       > **Lambda : 0.001**   
+       > **Test Mean Squared Error : 0.0197735**
+        
+    -   List of Selected Features
 
-| Feature      | Coefficient          |
-|--------------|----------------------|
-| racePctWhite | -0.16657586983235712 |
-| PctKids2Par  | -0.34683223005634045 |
-| PctIlleg     | 0.1645701922221338   |
-| HousVacant   | 0.06341717198318916  |
+        | Feature      | Coefficient          |
+        |--------------|----------------------|
+        | racePctWhite | -0.16657586983235712 |
+        | PctKids2Par  | -0.34683223005634045 |
+        | PctIlleg     | 0.1645701922221338   |
+        | HousVacant   | 0.06341717198318916  |
+
+### i) PCR Model:
+
+   > **Test Mean Squared Error : 0.0197735**
+   
+   
+### j) XG BOOST:
+
+   > **Alpha : 0.10**
+    -   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/1_j_xgboost_alpha_reg_parameter_final.png "Reg Parameter vs CV Score")

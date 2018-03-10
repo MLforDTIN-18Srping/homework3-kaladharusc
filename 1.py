@@ -180,15 +180,19 @@ def i_pcr():
     y_test = test_data[response_var]
     x_test = test_data.drop(response_var, axis=1)
 
-    components = np.arange(1,min(train_data.shape), 2)
-
+    components = np.arange(1,min(train_data.shape), 1)
 
     cv_scores = []
     test_errors = []
+    variance_scores = []
+
     for n in components:
         pca = PCA(n_components=n)
-        cv_scores.append(np.mean(cross_val_score(pca,x_train, y_train, cv=5)))
         x_pca = pca.fit_transform(x_train)
+        cv_scores.append(np.mean(cross_val_score(pca, x_pca, y_train, cv=5)))
+        variance_scores.append(np.sum(pca.explained_variance_ratio_))
+
+        pca = PCA(n_components=n)
         x_test_pca = pca.fit_transform(x_test)
 
         lr = LinearRegression()
@@ -196,6 +200,8 @@ def i_pcr():
 
         y_predict = lr.predict(x_test_pca)
         test_errors.append(mean_squared_error(y_test, y_predict))
+
+
 
     #print(cv_scores)
     max_val = max(cv_scores)
@@ -216,18 +222,18 @@ def i_pcr():
     print(components[index_te], min_val)
     plt.plot(components, test_errors, linestyle='--', marker='o', ms=3)
     plt.xlabel("n components")
-    plt.ylabel("MSE")
+    plt.ylabel("Test MSE")
     # plt.plot(components[index], cv_scores[index],marker='X', ms=6)
     # print(components[index], cv_scores[index])
-    plt.savefig("./i_pcr_mse.png")
+    plt.savefig("./plots/1_i_pcr_mse.png")
     plt.close()
 
-    plt.plot(components, cv_scores, linestyle='--', marker='o', ms=3)
-    plt.plot(components[index], cv_scores[index],marker='X', ms=6)
-    print(components[index], cv_scores[index])
+    plt.plot(components, variance_scores, linestyle='--', marker='o', ms=3)
+    # plt.plot(components[index], cv_scores[index],marker='X', ms=5)
+    # print(components[index], cv_scores[index])
     plt.xlabel("n components")
-    plt.ylabel("CV scores")
-    plt.savefig("./i_pcr_cv_score.png")
+    plt.ylabel("Variance Explained")
+    plt.savefig("./plots/1_i_pcr_cv_score.png")
 #=======================================================================================================================
 def j_xg_boost():
     train_data, test_data, _ = b_fill_nan()
@@ -248,9 +254,9 @@ def j_xg_boost():
     alphas = [0.0001, 0.001, 0.01, 0.1, 0.2,0.3]
     n_trees = range(1,20,1)
 
-    for n in n_trees:
-        print(n)
-        model = xgboost.XGBRegressor(max_depth=n, learning_rate=0.1)
+    for alpha in alphas:
+        print(alpha)
+        model = xgboost.XGBRegressor(max_depth=1, learning_rate=alpha)
         folds = KFold(n_splits=5,random_state=7)
         result = np.mean(cross_val_score(model, x_train, y_train, cv=folds))
         model.fit(x_train,y_train)
@@ -263,11 +269,12 @@ def j_xg_boost():
     cv_scores = np.array(cv_scores)
     cv_test_scores = np.array(cv_test_scores)
 
-    plt.errorbar(alphas, cv_scores, label=str(i)+"CV train")
+    plt.errorbar(alphas, cv_scores, label=str(i)+" CV train")
     # plt.errorbar(alphas, cv_test_scores, label=str(i)+" Mean Squared Test data")
     # plt.errorbar(alphas, cv_train_scores, label=str(i) + " Mean Squared Train data")
 
     plt.xlabel("regularization parameter")
+    plt.ylabel("Cross Validation Score")
     plt.legend(loc="upper right")
     plt.savefig("./plots/1_j_xgboost_alpha_reg_parameter_final.png")
 #=======================================================================================================================
@@ -280,9 +287,9 @@ if __name__ == '__main__':
     #e_plots()
     #f_linear_regression()
     #g_ridge_regression()
-    h_lasso_regresion()
+    #h_lasso_regresion()
     #i_pcr()
-    #j_xg_boost()
+    j_xg_boost()
 
 
 
