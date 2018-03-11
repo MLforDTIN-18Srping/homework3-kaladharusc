@@ -75,6 +75,7 @@ def e_plots():
     fig = plt.figure(figsize=(20, 10))
     box_plot_data = train_data[top_cvs.index]
     plt.boxplot(box_plot_data.as_matrix(), labels=top_cvs.index.values)
+    plt.suptitle("Box Plots of top 11 Features",fontsize=20, y=0.95)
     plt.savefig("./plots/1_e_boxplot.png", bbox_inches='tight')
     plt.close()
 
@@ -85,6 +86,7 @@ def e_plots():
         X = train_data[key]
         scatterplot(X,Y, key, response_var)
         i += 1
+    plt.suptitle("Scatter plot of Features VS Response",fontsize=20, y=0.95)
     plt.savefig("./plots/1_e_scatter_plots_response.png", bbox_inches='tight')
     plt.close()
 
@@ -100,7 +102,7 @@ def e_plots():
             ax.yaxis.label.set_rotation(0)
             # to make sure y axis names are outside the plot area
             ax.yaxis.labelpad = 50
-
+    plt.suptitle("Scatter plot of pair wise features",fontsize=20, y=0.95)
     plt.savefig("./plots/1_e_scatter_plots.png", bbox_inches='tight')
     plt.close()
 #=======================================================================================================================
@@ -225,6 +227,7 @@ def i_pcr():
     plt.ylabel("Test MSE")
     # plt.plot(components[index], cv_scores[index],marker='X', ms=6)
     # print(components[index], cv_scores[index])
+    plt.suptitle("Componenets VS MSE", fontsize=20, y=0.95)
     plt.savefig("./plots/1_i_pcr_mse.png")
     plt.close()
 
@@ -233,6 +236,7 @@ def i_pcr():
     # print(components[index], cv_scores[index])
     plt.xlabel("n components")
     plt.ylabel("Variance Explained")
+    plt.suptitle("Componenets VS Variance Scores", fontsize=20, y=0.95)
     plt.savefig("./plots/1_i_pcr_cv_score.png")
 #=======================================================================================================================
 def j_xg_boost():
@@ -276,6 +280,7 @@ def j_xg_boost():
     plt.xlabel("regularization parameter")
     plt.ylabel("Cross Validation Score")
     plt.legend(loc="upper right")
+    plt.suptitle("alpha Values VS Cross Validation Scores", fontsize=15, y=0.95)
     plt.savefig("./plots/1_j_xgboost_alpha_reg_parameter_final.png")
 #=======================================================================================================================
 if __name__ == '__main__':
@@ -284,12 +289,12 @@ if __name__ == '__main__':
     #b_fill_nan()
     #c_correlation_matrix()
     #d_coefficient_variation()
-    #e_plots()
+    e_plots()
     #f_linear_regression()
     #g_ridge_regression()
     #h_lasso_regresion()
     #i_pcr()
-    j_xg_boost()
+    #j_xg_boost()
 
 
 

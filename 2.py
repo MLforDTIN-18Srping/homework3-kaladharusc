@@ -5,13 +5,21 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix, roc_curve, auc
 import weka.core.jvm as jvm
 import itertools
+from pandas.plotting import scatter_matrix
 ##################################################### Common Functions #################################################
 def read_data():
     train_data = pd.read_csv("aps_failure_training_set.csv", skip_blank_lines=False)
     test_data = pd.read_csv("aps_failure_test_set.csv", skip_blank_lines=False)
 
     return train_data,test_data
-
+def scatterplot(X, Y, xLabel, yLabel, xticks=None, yticks=None):
+    plt.scatter(X, Y, s=2)
+    plt.xlabel(xLabel)
+    if xticks is not None:
+        plt.xticks(np.arange(xticks.size), xticks)
+    if yticks is not None:
+        plt.yticks(np.arange(yticks.size), yticks)
+    plt.ylabel(yLabel)
 def plot_corr(correlations, columns):
     fig = plt.figure(figsize=(30,30))
     ax = fig.add_subplot(111)
@@ -23,6 +31,7 @@ def plot_corr(correlations, columns):
     ax.set_xticklabels(columns)
     ax.set_yticklabels(columns)
     plt.xticks(rotation=90)
+    plt.suptitle("Correlation Matrix", fontsize=20, y=0.95)
     savefig("./plots/2_b_iii_correlations.png")
 def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix', cmap=plt.cm.Blues):
     """
@@ -111,7 +120,34 @@ def b_iii_correlation_matrix():
     plot_corr(correlations, train_data.columns.values)
 # ======================================================================================================================
 def b_iv_plots():
-    train_data, test_data = b_i_impute_data()
+    response_var = "class"
+    CV_series = b_ii_coefficient_variation()
+    train_data, test_data  = b_i_impute_data()
+
+    top_cvs = CV_series.head(13)
+    Y = train_data[response_var]
+    fig = plt.figure(figsize=(20, 10))
+    box_plot_data = train_data[top_cvs.index]
+    plt.boxplot(box_plot_data.as_matrix(), labels=top_cvs.index.values)
+    plt.suptitle("Box Plots of top 13 Features",fontsize=20, y=0.95)
+    plt.savefig("./plots/2_e_boxplot.png", bbox_inches='tight')
+    plt.close()
+
+    axs = scatter_matrix(box_plot_data, figsize=(21, 21))
+    n = len(box_plot_data.columns)
+    for x in range(n):
+        for y in range(n):
+            # to get the axis of subplots
+            ax = axs[x, y]
+            # to make x axis name vertical
+            ax.xaxis.label.set_rotation(90)
+            # to make y axis name horizontal
+            ax.yaxis.label.set_rotation(0)
+            # to make sure y axis names are outside the plot area
+            ax.yaxis.labelpad = 50
+    plt.suptitle("Scatter plot of pair wise features",fontsize=20, y=0.95)
+    plt.savefig("./plots/2_e_scatter_plots.png", bbox_inches='tight')
+    plt.close()
 
 # ======================================================================================================================
 def b_v_numberof_pos_neg():
@@ -148,6 +184,9 @@ def c_random_forest():
     plt.plot(n_componenets,oob_errors,label = "RandomForestClassifier, max_features='sqrt'")
     plt.plot(n_componenets[min_index],oob_errors[min_index],marker='X', ms=6)
     plt.legend(loc="upper right")
+    plt.suptitle("No Of Componenets VS OOB Errors", fontsize=20, y=0.95)
+    plt.xlabel("No. of Componenets")
+    plt.ylabel("OOB Error")
     savefig("./plots/2_c_oob_errors.png")
     plt.close()
 
@@ -163,7 +202,7 @@ def c_random_forest():
 
     plt.figure()
     plot_confusion_matrix(cm, classes=["neg", "pos"],
-                          title='Confusion matrix, without normalization')
+                          title='Train Data Confusion matrix, without normalization')
     savefig("./plots/2_c_train_confusion_matrix.png")
     plt.close()
 
@@ -174,17 +213,19 @@ def c_random_forest():
     cm = confusion_matrix(y_test, y_predict, labels=["neg", "pos"])
     plt.figure()
     plot_confusion_matrix(cm, classes=["neg", "pos"],
-                          title='Confusion matrix, without normalization')
+                          title='Test Data Confusion matrix, without normalization')
     savefig("./plots/2_c_test_confusion_matrix.png")
     plt.close()
 
     #ROC curve Train Data
     Y_score = rfc.predict_proba(x_train)[:,1:]
+    plt.suptitle("Train ROC Curve", fontsize=20, y=0.95)
     plot_roc_curve(y_train,Y_score,"./plots/2_c_train_ROC_curve.png")
     plt.close()
 
     # ROC curve Test Data
     Y_score = rfc.predict_proba(x_test)[:, 1:]
+    plt.suptitle("Test ROC Curve", fontsize=20, y=0.95)
     plot_roc_curve(y_test, Y_score, "./plots/2_c_test_ROC_curve.png")
     plt.close()
 # ======================================================================================================================
@@ -217,6 +258,9 @@ def d_random_forest_balanced():
     plt.plot(n_componenets,oob_errors,label = "RandomForestClassifier, max_features='sqrt'")
     plt.plot(n_componenets[min_index],oob_errors[min_index],marker='X', ms=6)
     plt.legend(loc="upper right")
+    plt.suptitle("No Of Componenets VS OOB Errors", fontsize=20, y=0.95)
+    plt.xlabel("No. of Componenets")
+    plt.ylabel("OOB Error")
     savefig("./plots/2_d_oob_errors.png")
     plt.close()
 
@@ -232,7 +276,7 @@ def d_random_forest_balanced():
 
     plt.figure()
     plot_confusion_matrix(cm, classes=["neg", "pos"],
-                          title='Confusion matrix, without normalization')
+                          title='Train Data Confusion matrix, without normalization')
     savefig("./plots/2_d_train_confusion_matrix.png")
     plt.close()
 
@@ -243,17 +287,19 @@ def d_random_forest_balanced():
     cm = confusion_matrix(y_test, y_predict, labels=["neg", "pos"])
     plt.figure()
     plot_confusion_matrix(cm, classes=["neg", "pos"],
-                          title='Confusion matrix, without normalization')
+                          title='Test Data Confusion matrix, without normalization')
     savefig("./plots/2_d_test_confusion_matrix.png")
     plt.close()
 
     #ROC curve Train Data
     Y_score = rfc.predict_proba(x_train)[:,1:]
+    plt.suptitle("Train ROC Curve", fontsize=20, y=0.95)
     plot_roc_curve(y_train,Y_score,"./plots/2_d_train_ROC_curve.png")
     plt.close()
 
     # ROC curve Test Data
     Y_score = rfc.predict_proba(x_test)[:, 1:]
+    plt.suptitle("Test ROC Curve", fontsize=20, y=0.95)
     plot_roc_curve(y_test, Y_score, "./plots/2_d_test_ROC_curve.png")
     plt.close()
 
@@ -291,6 +337,7 @@ def e_model_tree():
     print("Train confusion matrix")
     print(evl.confusion_matrix)
     plcls.plot_roc(evl, class_index=[0, 1], wait=True)
+    plt.suptitle("Train ROC Curve", fontsize=20, y=0.95)
     savefig("./plots/e_train_roc_curve.png")
 
     evl = Evaluation(test_data)
@@ -303,6 +350,7 @@ def e_model_tree():
     print("Testconfusion matrix")
     print(evl.confusion_matrix)
     plcls.plot_roc(evl, class_index=[0, 1], wait=True)
+    plt.suptitle("Test ROC Curve", fontsize=20, y=0.95)
     savefig("./plots/e_test_roc_curve.png")
 
     # train_data, test_data = b_i_impute_data()
@@ -374,6 +422,7 @@ def f_smote():
     print("Testconfusion matrix")
     print(evl.confusion_matrix)
     plcls.plot_roc(evl, class_index=[0, 1], wait=True)
+    plt.suptitle("Test ROC Curve", fontsize=20, y=0.95)
     savefig("./plots/f_test_roc_curve.png")
 
 
@@ -382,8 +431,9 @@ if __name__ == '__main__':
     #b_i_impute_data()
     #b_ii_coefficient_variation()s
     #b_iii_correlation_matrix()
+    b_iv_plots()
     #b_v_numberof_pos_neg()
     #c_random_forest()
     #d_random_forest_balanced()
     #e_model_tree()
-    f_smote()
+    #f_smote()
