@@ -1,4 +1,3 @@
-# PLOT NAMES
 # homework1-kaladharusc ( USC ID: 7761016469 )
 ## 1) The LASSO and Boosting for Regression
 ### a) Download and read data
