@@ -459,6 +459,7 @@
    > Test Accuracy: 0.98875   
    > Train Mis Classification Rate: 0.00025   
    > Test Mis Classification Rate: 0.01125
+   
    - OOB ERRORS
    ![alt text](./plots/2_d_oob_errors.png "Out Of Bag Error")
    > No.Of Componenets : 80   
@@ -474,7 +475,7 @@
    -    Test Confusion Matrix
         ![alt text](./plots/2_e_SMOTE_Test_Confusion_Matrix.png "Test Confusion Matrix")
    - Train confusion matrix
-        ![alt text](./plots/2_e_SMOTE Train_Confusion_Matrix.png "Train Confusion Matrix")
+        ![alt text](./plots/2_e_SMOTE_Train_Confusion_Matrix.png "Train Confusion Matrix")
    > Train Accuracy: 99.17333333333333
    > Test Accuracy: 99.025
 
@@ -493,6 +494,16 @@
        
    > Train Accuracy: 98.730239   
    > Test Accuracy: 96.5625
+   
+   - Compare   
+   
+    |                | Un Compensated | SMOTE   |
+    |----------------|----------------|---------|
+    | Train Accuracy | 99.173         | 98.730  |
+    | Test Accuracy  | 99.025         | 96.5625 |
+    
+   *Though Test Accuracy Decreased in SMOTE the overall classification rate for `pos` class has increased
+    This shows that oversampling of minority class did work*
 ## ISLR
 
    ![alt text](./islr/552_hw_3-1.png)
