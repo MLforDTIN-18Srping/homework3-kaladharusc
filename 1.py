@@ -90,7 +90,7 @@ def e_plots():
     plt.savefig("./plots/1_e_scatter_plots_response.png", bbox_inches='tight')
     plt.close()
 
-    axs = scatter_matrix(box_plot_data, figsize=(21, 21), diagonal='kde')
+    axs = scatter_matrix(box_plot_data, figsize=(21, 21))
     n = len(box_plot_data.columns)
     for x in range(n):
         for y in range(n):

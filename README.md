@@ -158,7 +158,11 @@
 -   ![alt text](./plots/1_e_scatter_plots.png "pairwise scatter plot")
 -   ![alt text](./plots/1_e_scatter_plots_response.png "response feature scatter plot")
 -   ![alt text](./plots/1_e_boxplot.png "box plot")
--   ~TODO: Conclusions~
+        
+    *There are some linear relations between features, one of them are more likey to be discarded by 
+    feature selection algorithms*   
+    *There are also some features where values are all over the space. which might not yield
+    better results*
 
 ### f) Linear Regression:
 
