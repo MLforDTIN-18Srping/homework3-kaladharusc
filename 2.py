@@ -362,28 +362,24 @@ def e_model_tree():
     #
 
 from imblearn.over_sampling import SMOTE
+import inspect
+from datetime import datetime
+def print_f(*args, file=None):
+    if file:
+        f1 = open(file, "a+")
+    else:
+        f1 = open("./outputs/output.txt","a+")
+    f1.write("========================" +  inspect.stack()[1][3] + "*** "+  str(datetime.now())+"===================\n")
+    print(*args, file=f1)
 
 def f_smote():
     jvm.start()
 
     train_data, test_data = b_i_impute_data()
 
+    train_data = train_data[:10000]
     y_train = train_data["class"]
     x_train = train_data.drop("class", axis=1)
-
-
-    # x_train.to_csv("./train_data_x.csv", index=False)
-    # y_train.to_csv("./train_data_y.csv",index=False)
-
-
-    # train_data_x = converters.load_any_file("train_data_x.csv")
-    # train_data_y = converters.load_any_file("train_data_y.csv")
-    #train_data.class_is_first()
-
-
-
-    # test_data = converters.load_any_file("test_data.csv")
-    # test_data.class_is_first()
 
     sm = SMOTE(ratio="minority")
     x_train_sm, y_train_sm = sm.fit_sample(x_train,y_train)
@@ -392,8 +388,7 @@ def f_smote():
     x_train_sm_df =  pd.DataFrame(x_train_sm,columns=x_train.columns)
     y_train_sm_df = pd.DataFrame(y_train_sm, columns=["class"])
     train_data_sm_df = pd.concat([y_train_sm_df,x_train_sm_df],axis=1)
-    print("smote train data shape", train_data_sm_df.shape)
-
+    print_f("smote train data shape", train_data_sm_df.shape)
     train_data_sm_df.to_csv("./train_data_sm.csv", index=False)
 
     train_data_sm = converters.load_any_file("train_data_sm.csv")
@@ -403,27 +398,37 @@ def f_smote():
     test_data.class_is_first()
 
 
-    print("1")
+    print_f("1")
     cls = Classifier(classname="weka.classifiers.trees.LMT")
-    print("bulding classifier")
+    print_f("bulding classifier")
     cls.build_classifier(train_data_sm)
-    print("Evaluating")
+    print_f("Evaluating")
     evl = Evaluation(train_data_sm)
 
+    evl.crossvalidate_model(cls, train_data_sm, 5, Random(1))
+    print_f("Train Accuracy:", evl.percent_correct)
+    print_f("Train summary")
+    print_f(evl.summary())
+    print_f("Train class details")
+    print_f(evl.class_details())
+    print_f("Train confusion matrix")
+    print_f(evl.confusion_matrix)
+    plcls.plot_roc(evl, class_index=[0, 1], wait=True, outfile="./plots/2_f_smote_10k.png")
+    plt.suptitle("Train ROC Curve", fontsize=20, y=0.95)
 
-    evl = Evaluation(test_data)
-    print("testing model")
-    evl.test_model(cls, test_data)
-    print("Test Accuracy:", evl.percent_correct)
-    print("Test summary")
-    print(evl.summary())
-    print(" Testclass details")
-    print(evl.class_details())
-    print("Testconfusion matrix")
-    print(evl.confusion_matrix)
-    plcls.plot_roc(evl, class_index=[0, 1], wait=True)
-    plt.suptitle("Test ROC Curve", fontsize=20, y=0.95)
-    savefig("./plots/f_test_roc_curve.png")
+    # evl = Evaluation(test_data)
+    # print_f("testing model")
+    # evl.test_model(cls, test_data)
+    # print_f("Test Accuracy:", evl.percent_correct)
+    # print_f("Test summary")
+    # print_f(evl.summary())
+    # print_f(" Testclass details")
+    # print_f(evl.class_details())
+    # print_f("Testconfusion matrix")
+    # print_f(evl.confusion_matrix)
+    # plcls.plot_roc(evl, class_index=[0, 1], wait=True)
+    # plt.suptitle("Test ROC Curve", fontsize=20, y=0.95)
+    # savefig("./plots/f_test_roc_curve.png")
 
 
 
@@ -431,9 +436,9 @@ if __name__ == '__main__':
     #b_i_impute_data()
     #b_ii_coefficient_variation()s
     #b_iii_correlation_matrix()
-    b_iv_plots()
+    #b_iv_plots()
     #b_v_numberof_pos_neg()
     #c_random_forest()
     #d_random_forest_balanced()
     #e_model_tree()
-    #f_smote()
+    f_smote()

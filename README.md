@@ -173,8 +173,8 @@
 
 -   ##### Without Normalization:
 
-       > **Lambda : 0.001**   
-       > **Test Mean Squared Error : 0.0175493**
+       > **Lambda : 0.001**  
+       > **Test Mean Squared Error: 0.0175493**
        
     -   List of Selected Features
 
@@ -479,4 +479,6 @@
    ``` [[15134.   491.] [   59.   316.]]  ```
    > Train Accuracy:
    > Test Accuracy: 96.5625
-    
+## ISLR
+
+   ![alt text](./552_hw_3.pdf)
