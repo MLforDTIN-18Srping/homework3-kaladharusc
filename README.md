@@ -22,7 +22,7 @@
 - > We can see there are no missing values
 
 ### c) Correlation Matrix
--   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/1_c_correlations.png "correlation matrix")
+-   ![alt text](./plots/1_c_correlations.png "correlation matrix")
 
 ### d) Coefficient of Variation for each feature.
 -   Calculated using `Standard Deviation / Mean` .
@@ -155,9 +155,9 @@
     | LemasSwFTFieldOps     | 0.06400225509556129      |
     
 ### e) Scatter plot and Box plots
--   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/1_e_scatter_plots.png "pairwise scatter plot")
--   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/1_e_scatter_plots_response.png "response feature scatter plot")
--   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/1_e_boxplot.png "box plot")
+-   ![alt text](./plots/1_e_scatter_plots.png "pairwise scatter plot")
+-   ![alt text](./plots/1_e_scatter_plots_response.png "response feature scatter plot")
+-   ![alt text](./plots/1_e_boxplot.png "box plot")
 -   ~TODO: Conclusions~
 
 ### f) Linear Regression:
@@ -227,7 +227,7 @@
 ### j) XG BOOST:
 
    > **Alpha : 0.10**
-    -   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/1_j_xgboost_alpha_reg_parameter_final.png "Reg Parameter vs CV Score")
+    -   ![alt text](./plots/1_j_xgboost_alpha_reg_parameter_final.png "Reg Parameter vs CV Score")
     
 ## 2) Tree Based Methods
 
@@ -418,47 +418,47 @@
 
 -   ####  iii) Correlation Matrix
 
-   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/2_b_iii_correlations.png "Correlation Matrix")
+   ![alt text](./plots/2_b_iii_correlations.png "Correlation Matrix")
 
 -   ### iv) Scatter plots and box plots
-   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/2_b_iv_boxplot.png "Boxplot")
-   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/2_b_iv_scatter_plots.png "Scatter plot")
+   ![alt text](./plots/2_b_iv_boxplot.png "Boxplot")
+   ![alt text](./plots/2_b_iv_scatter_plots.png "Scatter plot")
 -   ### v) Number of neg and pos
     >   neg    59000   
         pos     1000
 ### C) Random Forest: imbalanced
 
-   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/2_c_train_confusion_matrix.png "Train Confusion Matrix")
-   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/2_c_test_confusion_matrix.png "Test Confusion Matrix")
-   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/2_c_train_ROC_curve.png "Train ROC")
-   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/2_c_test_ROC_curve.png "Test ROC")
+   ![alt text](./plots/2_c_train_confusion_matrix.png "Train Confusion Matrix")
+   ![alt text](./plots/2_c_test_confusion_matrix.png "Test Confusion Matrix")
+   ![alt text](./plots/2_c_train_ROC_curve.png "Train ROC")
+   ![alt text](./plots/2_c_test_ROC_curve.png "Test ROC")
    
    > Train Accuracy :   0.9999833333    
    > Test Accuracy: 0.9925
    > Train Mis Classification Rate: 0.00001
    > Test Mis Classification Rate: 0.0075
    
-   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/2_c_oob_errors.png "Out Of Bag Error")
+   ![alt text](./plots/2_c_oob_errors.png "Out Of Bag Error")
    > OOB ERROR: 0.005
 
 ### D) Random Forest: Balanced
     
-   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/2_d_train_confusion_matrix.png "Train Confusion Matrix")
-   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/2_d_test_confusion_matrix.png "Test Confusion Matrix")
-   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/2_d_train_ROC_curve.png "Train ROC")
-   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/2_d_test_ROC_curve.png "Test ROC")
+   ![alt text](./plots/2_d_train_confusion_matrix.png "Train Confusion Matrix")
+   ![alt text](./plots/2_d_test_confusion_matrix.png "Test Confusion Matrix")
+   ![alt text](./plots/2_d_train_ROC_curve.png "Train ROC")
+   ![alt text](./plots/2_d_test_ROC_curve.png "Test ROC")
 
    > Train Accuracy :   0.99975       
    > Test Accuracy: 0.98875
    > Train Mis Classification Rate: 0.00025
    > Test Mis Classification Rate: 0.01125
    
-   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/2_d_oob_errors.png "Out Of Bag Error")
+   ![alt text](./plots/2_d_oob_errors.png "Out Of Bag Error")
    
 ### E) Model Trees
     Used 5 Folds
-   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/2_e_train_roc.png "Train ROC")
-   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/2_e_roc_test.png "Test ROC")
+   ![alt text](./plots/2_e_train_roc.png "Train ROC")
+   ![alt text](./plots/2_e_roc_test.png "Test ROC")
    -    Test Confusion Matrix
    [[15584.    41.]
     [  115.   260.]]
@@ -471,7 +471,7 @@
 ### F) SMOTE
 
     ~TODO Train CV~
-   ![alt text](https://github.com/MLforDTIN-18Srping/homework3-kaladharusc/blob/master/plots/2_f_roc_smote_lmt_60k.png "Test ROC")   
+   ![alt text](./plots/2_f_roc_smote_lmt_60k.png "Test ROC")   
    
     ~Todo TRAIN Confusion Matrix~
    
@@ -481,4 +481,10 @@
    > Test Accuracy: 96.5625
 ## ISLR
 
-   ![alt text](./552_hw_3.pdf)
+   ![alt text](./islr/552_hw_3-1.png)
+   ![alt text](./islr/552_hw_3-2.png)
+   ![alt text](./islr/552_hw_3-3.png)
+   ![alt text](./islr/552_hw_3-4.png)
+   ![alt text](./islr/552_hw_3-5.png)
+   ![alt text](./islr/552_hw_3-6.png)
+   ![alt text](./islr/552_hw_3-7.png)
