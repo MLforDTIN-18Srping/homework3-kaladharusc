@@ -472,9 +472,9 @@
    - Test ROC
    ![alt text](./plots/2_e_roc_test.png "Test ROC")
    -    Test Confusion Matrix
-        ![alt text](./plots/2_e_SMOTE Test Confusion Matrix.png "Test Confusion Matrix")
+        ![alt text](./plots/2_e_SMOTE_Test_Confusion_Matrix.png "Test Confusion Matrix")
    - Train confusion matrix
-        ![alt text](./plots/2_e_SMOTE Train Confusion Matrix.png "Train Confusion Matrix")
+        ![alt text](./plots/2_e_SMOTE Train_Confusion_Matrix.png "Train Confusion Matrix")
    > Train Accuracy: 99.17333333333333
    > Test Accuracy: 99.025
 
@@ -486,10 +486,10 @@
    - Test ROC 
    ![alt text](./plots/2_f_roc_smote_lmt_60k.png "Test ROC")   
 
-   - Test Confusion Matrix
-       ![alt text](./plots/SMOTE Test Confusion with 10k.png "Test Confusion Matrix")
+   - Test Confusion Matrix  
+    ![alt text](./plots/SMOTE_Test_Confusion.png "Test Confusion Matrix")
    - Train Confusion Matrix with 10k values oversampled to (~20k) using smote  
-       ![alt text](./plots/SMOTE Train Confusion with 10k.png "Train Confusion Matrix")
+    ![alt text](./plots/SMOTE_Train_Confusion_with_10k.png "Train Confusion Matrix")
        
    > Train Accuracy: 98.730239   
    > Test Accuracy: 96.5625

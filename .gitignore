@@ -5,6 +5,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+train_data_sm.csv
 # C extensions
 *.so
 *.DS_Store
