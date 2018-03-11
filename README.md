@@ -208,7 +208,7 @@
 -   #####  After Normalization:
 
        > **Lambda : 0.001**   
-       > **Test Mean Squared Error : 0.0197735**
+        **Test Mean Squared Error : 0.0197735**
         
     -   List of Selected Features
 
@@ -427,10 +427,13 @@
     >   neg    59000   
         pos     1000
 ### C) Random Forest: imbalanced
-
+   - Train Confusion Matrix
    ![alt text](./plots/2_c_train_confusion_matrix.png "Train Confusion Matrix")
+   - Test Confusion Matrix
    ![alt text](./plots/2_c_test_confusion_matrix.png "Test Confusion Matrix")
+   - Train ROC and AUC
    ![alt text](./plots/2_c_train_ROC_curve.png "Train ROC")
+   - Test ROC and AUC
    ![alt text](./plots/2_c_test_ROC_curve.png "Test ROC")
    
    > Train Accuracy :   0.9999833333    
@@ -439,45 +442,56 @@
    > Test Mis Classification Rate: 0.0075
    
    ![alt text](./plots/2_c_oob_errors.png "Out Of Bag Error")
-   > OOB ERROR: 0.005
+   > OOB ERROR: 0.005   
+   > No. Of Components: 92
 
 ### D) Random Forest: Balanced
-    
+   - Train Confusion Matrix 
    ![alt text](./plots/2_d_train_confusion_matrix.png "Train Confusion Matrix")
+   - Test Confusion Matrix
    ![alt text](./plots/2_d_test_confusion_matrix.png "Test Confusion Matrix")
+   - Train ROC
    ![alt text](./plots/2_d_train_ROC_curve.png "Train ROC")
+   - Test ROC
    ![alt text](./plots/2_d_test_ROC_curve.png "Test ROC")
 
    > Train Accuracy :   0.99975       
-   > Test Accuracy: 0.98875
-   > Train Mis Classification Rate: 0.00025
+   > Test Accuracy: 0.98875   
+   > Train Mis Classification Rate: 0.00025   
    > Test Mis Classification Rate: 0.01125
-   
+   - OOB ERRORS
    ![alt text](./plots/2_d_oob_errors.png "Out Of Bag Error")
+   > No.Of Componenets : 80   
+   > OOB ERROR: 0.005   
    
 ### E) Model Trees
-    Used 5 Folds
+   Used 5 Folds
+   - Train ROC
    ![alt text](./plots/2_e_train_roc.png "Train ROC")
+   
+   - Test ROC
    ![alt text](./plots/2_e_roc_test.png "Test ROC")
    -    Test Confusion Matrix
-   [[15584.    41.]
-    [  115.   260.]]
+        ![alt text](./plots/2_e_SMOTE Test Confusion Matrix.png "Test Confusion Matrix")
    - Train confusion matrix
-    [[58855.   145.]
-     [  351.   649.]]
+        ![alt text](./plots/2_e_SMOTE Train Confusion Matrix.png "Train Confusion Matrix")
    > Train Accuracy: 99.17333333333333
    > Test Accuracy: 99.025
 
 ### F) SMOTE
 
-    ~TODO Train CV~
+   - Trained using 10k Train data and 5 folds
+   ![alt text](./plots/2_f_smote_10k.png "Train ROC")
+   
+   - Test ROC 
    ![alt text](./plots/2_f_roc_smote_lmt_60k.png "Test ROC")   
-   
-    ~Todo TRAIN Confusion Matrix~
-   
+
    - Test Confusion Matrix
-   ``` [[15134.   491.] [   59.   316.]]  ```
-   > Train Accuracy:
+       ![alt text](./plots/SMOTE Test Confusion with 10k.png "Test Confusion Matrix")
+   - Train Confusion Matrix with 10k values oversampled to (~20k) using smote  
+       ![alt text](./plots/SMOTE Train Confusion with 10k.png "Train Confusion Matrix")
+       
+   > Train Accuracy: 98.730239   
    > Test Accuracy: 96.5625
 ## ISLR
 
