@@ -227,6 +227,9 @@
 
    > **Test Mean Squared Error : 0.0197735**
    
+   ![alt text](./plots/1_i_pcr_mse.png "pairwise scatter plot")
+   ![alt text](./plots/1_i_pcr_cv_score.png "pairwise scatter plot")
+   
    
 ### j) XG BOOST:
 
