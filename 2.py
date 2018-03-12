@@ -6,6 +6,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix, roc_curve, auc
 import weka.core.jvm as jvm
 import itertools
 from pandas.plotting import scatter_matrix
+from sklearn.preprocessing import scale
 ##################################################### Common Functions #################################################
 def read_data():
     train_data = pd.read_csv("aps_failure_training_set.csv", skip_blank_lines=False)
@@ -129,6 +130,8 @@ def b_iv_plots():
     Y = train_data[response_var]
     fig = plt.figure(figsize=(20, 10))
     box_plot_data = train_data[top_cvs.index]
+    box_plot_data = scale(box_plot_data)
+    box_plot_data = pd.DataFrame(box_plot_data, columns=top_cvs.index.values)
     plt.boxplot(box_plot_data.as_matrix(), labels=top_cvs.index.values)
     plt.suptitle("Box Plots of top 13 Features",fontsize=20, y=0.95)
     plt.savefig("./plots/2_e_boxplot.png", bbox_inches='tight')
