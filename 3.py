@@ -1,18 +1,30 @@
 import pandas as pd
 import numpy as np
-from sklearn.metrics import confusion_matrix
 import matplotlib.pyplot as plt
 
-H = pd.DataFrame([[9663,142],[ 107,9698]])
+def scatterplot(X, Y, xLabel, yLabel, xticks=None, yticks=None, colors=None):
+
+    plt.scatter(X, Y, s=20, c=colors)
+    plt.xlabel(xLabel)
+    if xticks is not None:
+        plt.xticks(np.arange(xticks.size), xticks)
+    if yticks is not None:
+        plt.yticks(np.arange(yticks.size), yticks)
+    plt.ylabel(yLabel)
 
 
-cmap=plt.cm.Blues
-classes = ["pos","neg"]
-plt.imshow(H, interpolation='nearest', cmap=cmap)
-plt.title("test")
-plt.colorbar()
-tick_marks = np.arange(len(classes))
-plt.xticks(tick_marks, classes, rotation=45)
-plt.yticks(tick_marks, classes)
+def a():
+    df = pd.read_csv("./3.csv")
+    scatterplot(df["X1"],df["X2"],xLabel="X1",yLabel="X2", colors=df["Y"])
+    plt.savefig("./plots/9.7.3.a.png")
 
-plt.show()
+def b():
+    df = pd.read_csv("./3.csv")
+    scatterplot(df["X1"], df["X2"], xLabel="X1", yLabel="X2", colors=df["Y"])
+    x1,x2 = [4.0,2.0],[3.5,1.5]
+    plt.plot(x1,x2,marker="o")
+
+    plt.savefig("./plots/9.7.3.b.png")
+if __name__ == '__main__':
+    #a()
+    b()

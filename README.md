@@ -531,11 +531,14 @@
     
    *Correct classification of `pos` labels increased from `260` to `316`*
 ## ISLR
-
+   
+    
    ![alt text](./islr/552_hw_3-1.png)
    ![alt text](./islr/552_hw_3-2.png)
    ![alt text](./islr/552_hw_3-3.png)
    ![alt text](./islr/552_hw_3-4.png)
    ![alt text](./islr/552_hw_3-5.png)
+   ![alt text](./plots/9.7.3.a.png)
+   ![alt text](./plots/9.7.3.b.png)
    ![alt text](./islr/552_hw_3-6.png)
    ![alt text](./islr/552_hw_3-7.png)
