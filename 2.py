@@ -10,7 +10,8 @@ from pandas.plotting import scatter_matrix
 def read_data():
     train_data = pd.read_csv("aps_failure_training_set.csv", skip_blank_lines=False)
     test_data = pd.read_csv("aps_failure_test_set.csv", skip_blank_lines=False)
-
+    print(train_data.shape)
+    print(test_data.shape)
     return train_data,test_data
 def scatterplot(X, Y, xLabel, yLabel, xticks=None, yticks=None):
     plt.scatter(X, Y, s=2)
@@ -433,6 +434,7 @@ def f_smote():
 
 
 if __name__ == '__main__':
+    read_data()
     #b_i_impute_data()
     #b_ii_coefficient_variation()s
     #b_iii_correlation_matrix()
@@ -441,4 +443,4 @@ if __name__ == '__main__':
     #c_random_forest()
     #d_random_forest_balanced()
     #e_model_tree()
-    f_smote()
+    #f_smote()
