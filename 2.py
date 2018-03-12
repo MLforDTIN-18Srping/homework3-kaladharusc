@@ -134,7 +134,13 @@ def b_iv_plots():
     plt.savefig("./plots/2_e_boxplot.png", bbox_inches='tight')
     plt.close()
 
-    axs = scatter_matrix(box_plot_data, figsize=(21, 21))
+    color_map = {
+        'neg':"red",
+        "pos": "green"
+    }
+    colors = Y.apply(lambda group: color_map[group])
+
+    axs = scatter_matrix(box_plot_data, figsize=(21, 21), color = colors)
     n = len(box_plot_data.columns)
     for x in range(n):
         for y in range(n):
@@ -434,11 +440,11 @@ def f_smote():
 
 
 if __name__ == '__main__':
-    read_data()
+    #read_data()
     #b_i_impute_data()
     #b_ii_coefficient_variation()s
     #b_iii_correlation_matrix()
-    #b_iv_plots()
+    b_iv_plots()
     #b_v_numberof_pos_neg()
     #c_random_forest()
     #d_random_forest_balanced()

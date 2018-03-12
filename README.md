@@ -443,7 +443,7 @@
 
 -   ### iv) Scatter plots and box plots
    ![alt text](./plots/2_b_iv_boxplot.png "Boxplot")
-   ![alt text](./plots/2_b_iv_scatter_plots.png "Scatter plot")
+   ![alt text](./plots/2_e_scatter_plots.png "Scatter plot")
 -   ### v) Number of neg and pos
     >   neg    59000   
         pos     1000
